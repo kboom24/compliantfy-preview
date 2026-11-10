@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your website risk report · Compliantfy</title>
+<meta name="description" content="Compliantfy results report: risk score, exposure level and plain-English issues.">
+<meta name="robots" content="noindex, nofollow"><!-- DRAFT: remove noindex at launch -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="icon" href="favicon.ico" sizes="32x32"><link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#0B1F5C">
+<link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="ribbon" role="region" aria-label="Lawsuit alert"><div class="wrap"><span class="ic-alert" aria-hidden="true">!</span><span><strong>5,000+ website accessibility lawsuits were filed in 2025.</strong> <small>(UsableNet, 2025)</small></span><a href="index.html#scan">Is your site next? Free scan →</a></div></div>
+<header class="site-header"><div class="wrap hdr">
+<a class="brand" href="index.html"><img src="assets/img/logo.svg" alt="Compliantfy home" width="271" height="64"></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="burger" aria-hidden="true"></span>Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Main"><ul><li><a href="index.html">How it works</a></li><li><a href="done-for-you.html">Done-for-you</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="dashboard.html">Sign in</a></li><li class="cta"><a href="index.html#scan">Free scan</a></li></ul></nav>
+</div></header>
+<main id="main">
+<div class="ex-bar" id="ex-bar">EXAMPLE report. Sample data, not a scan of a real website.</div>
+<section class="rep-hero" aria-labelledby="rep-h"><div class="wrap rep-grid">
+<div class="scorecard" role="group" aria-labelledby="sc-h">
+<div class="notice-hd"><span id="sc-h">Risk score</span><span class="ex-badge">Example</span></div>
+<div class="notice-bd">
+<div class="score-num"><span id="r-score">—</span><small>/100</small></div>
+<p style="margin:.2rem 0 0;font-weight:800;font-size:1.15rem;color:var(--red)"><span data-r="level">—</span> exposure</p>
+<div class="exp-meter" aria-hidden="true"><span class="l1"></span><span class="l2"></span><span class="l3"></span><span class="l4"></span></div>
+<div class="exp-labels" aria-hidden="true"><span>Low</span><span>Elevated</span><span>High</span><span>Critical</span></div>
+<p class="disc" id="r-disc">Automated risk estimate. Not legal advice.</p>
+</div></div>
+<div>
+<p class="rep-meta"><span data-r="site">site</span> · <span id="r-pages">—</span> pages scanned · US rules</p>
+<h1 class="rep-h1" id="rep-h">We found <em><span id="r-total">—</span> issues</em> that could expose you to a lawsuit.</h1>
+<div class="sevrow" id="r-sev" aria-label="Issues by severity"></div>
+<div class="btn-row"><a class="btn btn-danger" href="#paths">Fix it now</a><a class="btn btn-ghost" href="#issues">See the issues</a></div>
+</div>
+</div></section>
+<section class="section" style="padding-top:2.5rem;padding-bottom:1.5rem" aria-labelledby="cat-h"><div class="wrap">
+<h2 id="cat-h" style="font-size:1.6rem">Issues by category</h2>
+<div class="catgrid" id="r-cats"></div>
+</div></section>
+<section class="section" id="issues" style="padding-top:1.5rem" aria-labelledby="iss-h"><div class="wrap" style="max-width:64rem">
+<h2 id="iss-h" style="font-size:1.6rem">Your top issues, in plain English</h2>
+<p class="cite" style="margin-bottom:1rem">"Why this gets you sued" explains risk in general terms. It isn't legal advice about your situation.</p>
+<div id="r-open"></div>
+<div class="locked-wrap" id="locked-wrap">
+<div class="locked-list" id="r-locked" aria-hidden="true"></div>
+<div class="gate"><div class="form-card">
+<h3 style="margin:0 0 .4rem">Unlock <span id="r-locked-count">0</span> more issues</h3>
+<p style="margin:0 0 1rem;color:var(--slate)">Get the full report: every issue, where it is, and how to fix it.</p>
+<form id="gate-form" novalidate>
+<div class="fld"><label for="g-email">Work email</label>
+<div class="gate-row"><input id="g-email" name="email" type="email" autocomplete="email" aria-describedby="g-err g-note"><button class="btn btn-danger" type="submit">Unlock full report</button></div>
+<p class="err" id="g-err" hidden></p></div>
+<p class="cite" id="g-note">Draft: nothing is sent. In this demo, submitting just unlocks the sample on this page.</p>
+</form></div></div>
+</div>
+</div></section>
+<section class="section section-soft" aria-labelledby="eu-h"><div class="wrap" style="max-width:64rem">
+<div class="module" id="r-eu" style="margin:0">
+<div class="module-hd"><h2 id="eu-h">EU module <span class="region">EU</span></h2>
+<label class="switch"><input type="checkbox" id="eu-toggle" role="switch" aria-controls="r-eu-list"><span>Show EU results (<span id="r-eu-count">0</span> issues)</span></label></div>
+<p class="cite" style="margin:.5rem 0 0">GDPR and European Accessibility Act checks. Scored separately from your US risk score. Not legal advice.</p>
+<div id="r-eu-list" style="margin-top:1rem"></div>
+</div></div></section>
+<section class="section" id="paths" aria-labelledby="paths-h"><div class="wrap">
+<div class="sec-head"><span class="eyebrow">Your next step</span><h2 id="paths-h">Two ways to fix this.</h2><p class="lead" id="r-rec"></p></div>
+<div class="twopaths">
+<div class="card"><span class="rec" data-rec="diy" hidden>Recommended for you</span><span class="k">DIY tools</span><h3>Fix it myself</h3><p>Fix guides for every issue above, a consent banner that blocks pixels until opt-in, a policy generator, and re-scans to prove it's fixed.</p>
+<div class="btn-row"><a class="btn btn-primary" href="pricing.html">Start fixing: see plans</a></div><p class="cite" style="margin-top:.8rem">Plan prices are placeholders.</p></div>
+<div class="card dark"><span class="rec" data-rec="done-for-you" hidden>Recommended for you</span><span class="k">Done-for-you</span><h3>Fix it for me</h3><p>Our team fixes every issue in your code, sets up consent, writes the pages, re-tests, and keeps watching every month.</p>
+<div class="btn-row"><a class="btn btn-light" href="quote.html">Get a fix quote</a></div><p class="cite" style="margin-top:.8rem;color:var(--sky)">No one can guarantee you won't be sued. We fix what's found and document it.</p></div>
+</div></div></section>
+</main>
+<footer class="site-footer"><div class="wrap">
+<div class="ft">
+<div><img src="assets/img/logo-reverse.svg" alt="Compliantfy" width="190" height="45"><p style="margin-top:1rem">Website compliance scanning, fix tools, and a team that fixes it for you. US first: ADA/WCAG, CCPA and state privacy, cookies and pixels.</p></div>
+<div><h2>Product</h2><ul><li><a href="index.html#scan">Free scan</a></li><li><a href="report.html">Sample report</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="dashboard.html">Dashboard demo</a></li></ul></div>
+<div><h2>Service</h2><ul><li><a href="done-for-you.html">Done-for-you fixes</a></li><li><a href="quote.html">Get a quote</a></li><li><a href="index.html#faq">FAQ</a></li></ul></div>
+<div><h2>Legal</h2><ul><li><a href="disclaimer.html">Not legal advice</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="accessibility.html">Accessibility</a></li></ul></div>
+</div>
+<div class="ft-legal">
+<p><strong>Compliantfy is not a law firm and does not give legal advice.</strong> Risk scores are automated estimates, not legal opinions, and no tool or service can guarantee you won't be sued. See the <a href="disclaimer.html">full disclaimer</a>.</p>
+<p>© 2026 <span class="ph">[LEGAL ENTITY — placeholder]</span> · <span class="ph">[DOMAIN — placeholder]</span> · Draft build, not published.</p>
+</div></div></footer>
+<script src="assets/js/site.js" defer></script>
+<script src="data/sample-results.js"></script><script src="assets/js/results.js"></script>
+<script>
+CF.load().then(function(r){
+  var st={eu:CF.euOn(),unlocked:new URLSearchParams(location.search).get('unlocked')==='1'};
+  try{if(sessionStorage.getItem('cf_unlocked')==='1')st.unlocked=true;}catch(x){}
+  CF.renderReport(r,st);
+  document.getElementById('eu-toggle').addEventListener('change',function(e){st.eu=e.target.checked;document.getElementById('r-eu-list').hidden=!st.eu;});
+  document.getElementById('gate-form').addEventListener('submit',function(e){e.preventDefault();
+    var i=document.getElementById('g-email'),er=document.getElementById('g-err');
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value.trim())){i.setAttribute('aria-invalid','true');er.hidden=false;er.textContent='Enter an email address like you@company.com';i.focus();return;}
+    try{sessionStorage.setItem('cf_unlocked','1');}catch(x){}
+    st.unlocked=true;CF.renderReport(r,st);var h=document.getElementById('iss-h');h.setAttribute('tabindex','-1');h.focus();});
+}).catch(function(){document.getElementById('r-open').textContent='Results could not be loaded.';});
+</script>
+</body></html>

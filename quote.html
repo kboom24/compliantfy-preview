@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Get a fix quote · Compliantfy</title>
+<meta name="description" content="Request a done-for-you fix quote.">
+<meta name="robots" content="noindex, nofollow"><!-- DRAFT: remove noindex at launch -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="icon" href="favicon.ico" sizes="32x32"><link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#0B1F5C">
+<link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="ribbon" role="region" aria-label="Lawsuit alert"><div class="wrap"><span class="ic-alert" aria-hidden="true">!</span><span><strong>5,000+ website accessibility lawsuits were filed in 2025.</strong> <small>(UsableNet, 2025)</small></span><a href="index.html#scan">Is your site next? Free scan →</a></div></div>
+<header class="site-header"><div class="wrap hdr">
+<a class="brand" href="index.html"><img src="assets/img/logo.svg" alt="Compliantfy home" width="271" height="64"></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="burger" aria-hidden="true"></span>Menu</button>
+<nav class="site-nav" id="site-nav" aria-label="Main"><ul><li><a href="index.html">How it works</a></li><li><a href="done-for-you.html" aria-current="page">Done-for-you</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="dashboard.html">Sign in</a></li><li class="cta"><a href="index.html#scan">Free scan</a></li></ul></nav>
+</div></header>
+<main id="main">
+<section class="phero"><div class="wrap narrow"><span class="eyebrow">Done-for-you quote</span><h1 style="font-size:clamp(2rem,1.3rem + 2.6vw,3.2rem)">Get a fix quote</h1>
+<p class="lead">Tell us about your site. We'll come back with a fixed-scope quote and a time for a short call.</p></div></section>
+<section class="section" style="padding-top:2rem"><div class="wrap narrow">
+<ol class="stepper" id="stepper" aria-label="Quote steps"><li data-s="1" aria-current="step">1. Your site</li><li data-s="2">2. What you need</li><li data-s="3">3. Contact &amp; call</li></ol>
+<div class="err-sum" id="err-sum" role="alert" hidden tabindex="-1"><strong>Please fix the following:</strong><ul id="err-list" style="margin:.4rem 0 0"></ul></div>
+<form id="quote" class="form-card" novalidate>
+<div data-step="1">
+<h2 class="step-h" tabindex="-1" style="font-size:1.4rem">Your site</h2>
+<div class="fld"><label for="q-url">Website address</label><input id="q-url" name="url" type="text" inputmode="url" autocomplete="url" required aria-required="true"></div>
+<div class="fld"><label for="q-platform">Platform</label><select id="q-platform" name="platform"><option>Shopify</option><option>WordPress / WooCommerce</option><option>Squarespace / Wix</option><option>Webflow</option><option>Custom code</option><option>Not sure</option></select></div>
+<div class="fld"><label for="q-pages">Roughly how many pages or products?</label><select id="q-pages" name="pages"><option>Under 50</option><option>50–500</option><option>500–5,000</option><option>5,000+</option></select></div>
+</div>
+<div data-step="2" hidden>
+<h2 class="step-h" tabindex="-1" style="font-size:1.4rem">What you need</h2>
+<fieldset class="fld"><legend>What should we fix? <span class="hint">Choose all that apply.</span></legend>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="need" value="a11y" checked><span>Accessibility (ADA / WCAG)<small>Code-level fixes</small></span></label>
+<label class="opt"><input type="checkbox" name="need" value="consent"><span>Cookie consent &amp; pixels<small>Block until opt-in</small></span></label>
+<label class="opt"><input type="checkbox" name="need" value="privacy"><span>Privacy policy &amp; opt-outs<small>CCPA / state laws</small></span></label>
+<label class="opt"><input type="checkbox" name="need" value="eu"><span>EU (GDPR, EAA)<small>Secondary module</small></span></label>
+</div></fieldset>
+<fieldset class="fld"><legend>Have you received a demand letter or lawsuit?</legend>
+<div class="opts"><label class="opt"><input type="radio" name="letter" value="no" checked><span>No</span></label><label class="opt"><input type="radio" name="letter" value="yes"><span>Yes<small>Your attorney handles the legal side. We fix the site.</small></span></label></div></fieldset>
+<fieldset class="fld"><legend>Ongoing protection?</legend>
+<div class="opts"><label class="opt"><input type="radio" name="retainer" value="yes" checked><span>Yes, monthly retainer</span></label><label class="opt"><input type="radio" name="retainer" value="no"><span>One-time fix only</span></label></div></fieldset>
+</div>
+<div data-step="3" hidden>
+<h2 class="step-h" tabindex="-1" style="font-size:1.4rem">Contact &amp; call</h2>
+<div class="fld"><label for="q-name">Your name</label><input id="q-name" name="name" type="text" autocomplete="name" required aria-required="true"></div>
+<div class="fld"><label for="q-email">Work email</label><input id="q-email" name="email" type="email" autocomplete="email" required aria-required="true"></div>
+<div class="fld"><label for="q-phone">Phone (optional)</label><input id="q-phone" name="phone" type="tel" autocomplete="tel"></div>
+<div class="fld"><label for="q-time">Best time for a 15-minute call</label><select id="q-time" name="time" aria-describedby="q-time-h"><option>Weekday morning</option><option>Weekday afternoon</option><option>Email me instead</option></select>
+<span class="hint" id="q-time-h" style="margin-top:.4rem">Booking tool: <span class="ph">[placeholder — calendar link TBD]</span></span></div>
+<div class="fld"><label for="q-notes">Anything else? (optional)</label><textarea id="q-notes" name="notes"></textarea></div>
+<p class="note-box">Draft: this form sends nothing. Where submissions go (email, CRM, booking tool) is still to be decided.</p>
+</div>
+<div class="btn-row" style="justify-content:space-between"><button class="btn btn-outline" type="button" id="q-back" hidden>Back</button><span></span><button class="btn btn-primary" type="submit" id="q-next">Continue</button></div>
+</form>
+<div class="ok-box" id="q-done" hidden tabindex="-1"><h2 style="font-size:1.5rem;margin:0 0 .4rem">Thanks, that's everything.</h2><p style="margin:0">In the live version, we'd confirm by email and propose a call time. <strong>Nothing was sent in this draft.</strong></p><div class="btn-row"><a class="btn btn-dark" href="report.html">Back to the sample report</a></div></div>
+</div></section>
+</main>
+<footer class="site-footer"><div class="wrap">
+<div class="ft">
+<div><img src="assets/img/logo-reverse.svg" alt="Compliantfy" width="190" height="45"><p style="margin-top:1rem">Website compliance scanning, fix tools, and a team that fixes it for you. US first: ADA/WCAG, CCPA and state privacy, cookies and pixels.</p></div>
+<div><h2>Product</h2><ul><li><a href="index.html#scan">Free scan</a></li><li><a href="report.html">Sample report</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="dashboard.html">Dashboard demo</a></li></ul></div>
+<div><h2>Service</h2><ul><li><a href="done-for-you.html">Done-for-you fixes</a></li><li><a href="quote.html">Get a quote</a></li><li><a href="index.html#faq">FAQ</a></li></ul></div>
+<div><h2>Legal</h2><ul><li><a href="disclaimer.html">Not legal advice</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="accessibility.html">Accessibility</a></li></ul></div>
+</div>
+<div class="ft-legal">
+<p><strong>Compliantfy is not a law firm and does not give legal advice.</strong> Risk scores are automated estimates, not legal opinions, and no tool or service can guarantee you won't be sued. See the <a href="disclaimer.html">full disclaimer</a>.</p>
+<p>© 2026 <span class="ph">[LEGAL ENTITY — placeholder]</span> · <span class="ph">[DOMAIN — placeholder]</span> · Draft build, not published.</p>
+</div></div></footer>
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/quote.js" defer></script>
+</body></html>

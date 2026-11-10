@@ -1,0 +1,338 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://compliantfy.example/schema/results.schema.json",
+  "title": "Compliantfy scan results",
+  "description": "Object the scan-in-progress and results-report screens render. Produced by the scanner (COMMANDER). Version 1.0.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "scan",
+    "score",
+    "summary",
+    "checks",
+    "issues"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "example": {
+      "type": "boolean",
+      "description": "true = sample data. UI shows an EXAMPLE banner."
+    },
+    "exampleNotice": {
+      "type": "string"
+    },
+    "scan": {
+      "type": "object",
+      "required": [
+        "id",
+        "url",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "status": {
+          "enum": [
+            "queued",
+            "running",
+            "complete",
+            "failed"
+          ]
+        },
+        "startedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "completedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "pagesScanned": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "regions": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "US",
+              "EU"
+            ]
+          },
+          "description": "US always. EU only if the visitor turned on the EU toggle."
+        }
+      }
+    },
+    "score": {
+      "type": "object",
+      "required": [
+        "value",
+        "exposure",
+        "disclaimer"
+      ],
+      "properties": {
+        "value": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Higher = more risk."
+        },
+        "exposure": {
+          "enum": [
+            "low",
+            "elevated",
+            "high",
+            "critical"
+          ],
+          "description": "0-29 low, 30-59 elevated, 60-84 high, 85-100 critical."
+        },
+        "scale": {
+          "type": "string"
+        },
+        "disclaimer": {
+          "type": "string",
+          "description": "Shown next to the score. Must say not legal advice."
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "totalIssues",
+        "bySeverity",
+        "byCategory"
+      ],
+      "properties": {
+        "totalIssues": {
+          "type": "integer"
+        },
+        "bySeverity": {
+          "type": "object",
+          "required": [
+            "critical",
+            "high",
+            "medium",
+            "low"
+          ],
+          "additionalProperties": {
+            "type": "integer"
+          }
+        },
+        "byCategory": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "label",
+              "issues",
+              "status"
+            ],
+            "properties": {
+              "id": {
+                "enum": [
+                  "accessibility",
+                  "privacy",
+                  "consent",
+                  "legal",
+                  "security"
+                ]
+              },
+              "label": {
+                "type": "string"
+              },
+              "issues": {
+                "type": "integer"
+              },
+              "status": {
+                "enum": [
+                  "pass",
+                  "warn",
+                  "fail"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "euSummary": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "totalIssues": {
+          "type": "integer"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "description": "Rows on the scan-in-progress screen, in display order.",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "category",
+          "region",
+          "label",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "category": {
+            "enum": [
+              "accessibility",
+              "privacy",
+              "consent",
+              "legal",
+              "security",
+              "eu"
+            ]
+          },
+          "region": {
+            "enum": [
+              "US",
+              "EU"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "queued",
+              "running",
+              "pass",
+              "warn",
+              "fail",
+              "skipped"
+            ]
+          },
+          "issues": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "issues": {
+      "type": "array",
+      "description": "Grouped findings, sorted by severity. The first gate.freeIssueCount US issues show unlocked.",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "category",
+          "region",
+          "severity",
+          "title",
+          "plainEnglish",
+          "whySued",
+          "howToFix"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "checkId": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "region": {
+            "enum": [
+              "US",
+              "EU"
+            ]
+          },
+          "severity": {
+            "enum": [
+              "critical",
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "plainEnglish": {
+            "type": "string"
+          },
+          "whySued": {
+            "type": "string",
+            "description": "Plain-English risk context. No legal conclusions."
+          },
+          "howToFix": {
+            "type": "string"
+          },
+          "standard": {
+            "type": "string"
+          },
+          "occurrences": {
+            "type": "integer"
+          },
+          "effort": {
+            "enum": [
+              "quick",
+              "moderate",
+              "dev"
+            ]
+          },
+          "where": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "gate": {
+      "type": "object",
+      "properties": {
+        "freeIssueCount": {
+          "type": "integer",
+          "default": 3
+        },
+        "unlockWith": {
+          "enum": [
+            "email",
+            "none"
+          ]
+        }
+      }
+    },
+    "recommendation": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "enum": [
+            "diy",
+            "done-for-you"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

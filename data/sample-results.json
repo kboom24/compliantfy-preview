@@ -1,0 +1,417 @@
+{
+  "schemaVersion": "1.0",
+  "example": true,
+  "exampleNotice": "EXAMPLE DATA. Not a real scan of any real website.",
+  "scan": {
+    "id": "scn_example_0001",
+    "url": "https://yourstore-example.com",
+    "status": "complete",
+    "startedAt": "2026-11-10T23:02:11Z",
+    "completedAt": "2026-11-10T23:05:47Z",
+    "pagesScanned": 24,
+    "regions": [
+      "US",
+      "EU"
+    ]
+  },
+  "score": {
+    "value": 78,
+    "exposure": "high",
+    "scale": "0-100, higher means more risk. 0-29 low, 30-59 elevated, 60-84 high, 85-100 critical.",
+    "disclaimer": "Automated risk estimate based on detected issues. Not legal advice and not a prediction or guarantee of any legal outcome."
+  },
+  "summary": {
+    "totalIssues": 23,
+    "bySeverity": {
+      "critical": 6,
+      "high": 8,
+      "medium": 6,
+      "low": 3
+    },
+    "byCategory": [
+      {
+        "id": "accessibility",
+        "label": "Accessibility (ADA / WCAG 2.2)",
+        "issues": 14,
+        "status": "fail"
+      },
+      {
+        "id": "privacy",
+        "label": "Privacy policy & US state privacy (CCPA)",
+        "issues": 3,
+        "status": "fail"
+      },
+      {
+        "id": "consent",
+        "label": "Cookie consent & tracking pixels",
+        "issues": 3,
+        "status": "fail"
+      },
+      {
+        "id": "legal",
+        "label": "Terms & legal pages",
+        "issues": 2,
+        "status": "warn"
+      },
+      {
+        "id": "security",
+        "label": "Forms, SSL & security headers",
+        "issues": 1,
+        "status": "warn"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "id": "a11y-names",
+      "category": "accessibility",
+      "region": "US",
+      "label": "Buttons and links have accessible names",
+      "status": "fail",
+      "issues": 4
+    },
+    {
+      "id": "a11y-alt",
+      "category": "accessibility",
+      "region": "US",
+      "label": "Images have text alternatives",
+      "status": "fail",
+      "issues": 3
+    },
+    {
+      "id": "a11y-forms",
+      "category": "accessibility",
+      "region": "US",
+      "label": "Form fields have labels and clear errors",
+      "status": "fail",
+      "issues": 3
+    },
+    {
+      "id": "a11y-contrast",
+      "category": "accessibility",
+      "region": "US",
+      "label": "Text color contrast",
+      "status": "fail",
+      "issues": 2
+    },
+    {
+      "id": "a11y-keyboard",
+      "category": "accessibility",
+      "region": "US",
+      "label": "Keyboard access and visible focus",
+      "status": "fail",
+      "issues": 2
+    },
+    {
+      "id": "priv-policy",
+      "category": "privacy",
+      "region": "US",
+      "label": "Privacy policy present and complete",
+      "status": "fail",
+      "issues": 2
+    },
+    {
+      "id": "priv-optout",
+      "category": "privacy",
+      "region": "US",
+      "label": "\"Do Not Sell or Share\" opt-out and Global Privacy Control",
+      "status": "fail",
+      "issues": 1
+    },
+    {
+      "id": "consent-banner",
+      "category": "consent",
+      "region": "US",
+      "label": "Cookie banner offers a real choice",
+      "status": "fail",
+      "issues": 1
+    },
+    {
+      "id": "consent-pixels",
+      "category": "consent",
+      "region": "US",
+      "label": "Tracking pixels wait for consent",
+      "status": "fail",
+      "issues": 2
+    },
+    {
+      "id": "legal-terms",
+      "category": "legal",
+      "region": "US",
+      "label": "Terms of service present",
+      "status": "pass",
+      "issues": 0
+    },
+    {
+      "id": "legal-a11y-statement",
+      "category": "legal",
+      "region": "US",
+      "label": "Accessibility statement present",
+      "status": "warn",
+      "issues": 2
+    },
+    {
+      "id": "sec-ssl",
+      "category": "security",
+      "region": "US",
+      "label": "SSL certificate valid",
+      "status": "pass",
+      "issues": 0
+    },
+    {
+      "id": "sec-headers",
+      "category": "security",
+      "region": "US",
+      "label": "Security headers set",
+      "status": "warn",
+      "issues": 1
+    },
+    {
+      "id": "eu-gdpr-consent",
+      "category": "eu",
+      "region": "EU",
+      "label": "GDPR: consent before non-essential cookies",
+      "status": "fail",
+      "issues": 2
+    },
+    {
+      "id": "eu-gdpr-policy",
+      "category": "eu",
+      "region": "EU",
+      "label": "GDPR: privacy notice lists legal bases and rights",
+      "status": "warn",
+      "issues": 1
+    },
+    {
+      "id": "eu-eaa",
+      "category": "eu",
+      "region": "EU",
+      "label": "European Accessibility Act: accessibility information published",
+      "status": "warn",
+      "issues": 1
+    }
+  ],
+  "issues": [
+    {
+      "id": "iss-001",
+      "checkId": "a11y-names",
+      "category": "accessibility",
+      "region": "US",
+      "severity": "critical",
+      "title": "Your \"Add to cart\" button has no name a screen reader can read",
+      "plainEnglish": "Blind shoppers using a screen reader hear \"button\" and nothing else, so they can't tell how to buy.",
+      "whySued": "Being unable to complete a purchase is the kind of barrier website accessibility complaints describe most often.",
+      "howToFix": "Give the icon button a text label, e.g. aria-label=\"Add to cart\", or put visible text inside it.",
+      "standard": "WCAG 2.2 SC 4.1.2 Name, Role, Value (Level A)",
+      "occurrences": 4,
+      "effort": "quick",
+      "where": [
+        "/products/*  button.add-to-cart",
+        "/cart  button.qty-plus"
+      ]
+    },
+    {
+      "id": "iss-002",
+      "checkId": "consent-pixels",
+      "category": "consent",
+      "region": "US",
+      "severity": "critical",
+      "title": "Meta and TikTok pixels fire before the visitor makes a cookie choice",
+      "plainEnglish": "Your ad trackers send visitor data the moment the page loads, before anyone clicks Accept.",
+      "whySued": "Sharing visitor data with ad platforms without consent has been the basis of US privacy lawsuits and regulator actions.",
+      "howToFix": "Load pixels through your consent manager so they only fire after opt-in, and honor Global Privacy Control signals.",
+      "standard": "CCPA/CPRA; state privacy laws",
+      "occurrences": 2,
+      "effort": "moderate",
+      "where": [
+        "All pages  <script> connect.facebook.net",
+        "All pages  <script> analytics.tiktok.com"
+      ]
+    },
+    {
+      "id": "iss-003",
+      "checkId": "a11y-forms",
+      "category": "accessibility",
+      "region": "US",
+      "severity": "critical",
+      "title": "Checkout form fields have no labels",
+      "plainEnglish": "Placeholder text disappears when someone starts typing, and screen readers can't tell which box is which.",
+      "whySued": "A checkout a disabled customer can't fill in blocks them from buying, which is the core of most website accessibility claims.",
+      "howToFix": "Add a visible <label> tied to every input, and announce errors in text, not color alone.",
+      "standard": "WCAG 2.2 SC 1.3.1 and 3.3.2 (Level A)",
+      "occurrences": 3,
+      "effort": "quick",
+      "where": [
+        "/checkout  input#email",
+        "/checkout  input#zip"
+      ]
+    },
+    {
+      "id": "iss-004",
+      "checkId": "a11y-alt",
+      "category": "accessibility",
+      "region": "US",
+      "severity": "high",
+      "title": "41 product images have no alt text",
+      "plainEnglish": "Screen reader users can't tell what your products look like.",
+      "whySued": "Missing image descriptions are among the barriers most commonly cited in website accessibility complaints.",
+      "howToFix": "Write short, specific alt text for product photos, and use alt=\"\" for decorative images.",
+      "standard": "WCAG 2.2 SC 1.1.1 Non-text Content (Level A)",
+      "occurrences": 41,
+      "effort": "moderate",
+      "where": [
+        "/collections/*  img.product-card__img"
+      ]
+    },
+    {
+      "id": "iss-005",
+      "checkId": "priv-optout",
+      "category": "privacy",
+      "region": "US",
+      "severity": "critical",
+      "title": "No \"Do Not Sell or Share My Personal Information\" link",
+      "plainEnglish": "California visitors have no way to opt out of their data being shared for ads.",
+      "whySued": "Regulators have enforced missing opt-outs and ignored Global Privacy Control under the CCPA.",
+      "howToFix": "Add the opt-out link in your footer, wire it to your consent tool, and honor GPC browser signals.",
+      "standard": "CCPA/CPRA",
+      "occurrences": 1,
+      "effort": "moderate",
+      "where": [
+        "Site footer"
+      ]
+    },
+    {
+      "id": "iss-006",
+      "checkId": "a11y-keyboard",
+      "category": "accessibility",
+      "region": "US",
+      "severity": "critical",
+      "title": "The menu can't be opened with a keyboard",
+      "plainEnglish": "People who can't use a mouse can't reach your categories or your cart.",
+      "whySued": "Keyboard traps and unreachable navigation block entire sites for some disabled users.",
+      "howToFix": "Use a real <button> for the menu toggle, and make sure Tab reaches every link with a visible focus ring.",
+      "standard": "WCAG 2.2 SC 2.1.1 and 2.4.7",
+      "occurrences": 2,
+      "effort": "dev",
+      "where": [
+        "Header  div.nav-toggle"
+      ]
+    },
+    {
+      "id": "iss-007",
+      "checkId": "priv-policy",
+      "category": "privacy",
+      "region": "US",
+      "severity": "high",
+      "title": "Privacy policy is missing required disclosures",
+      "plainEnglish": "Your policy doesn't say which data you collect, who you share it with, or how people can delete it.",
+      "whySued": "Incomplete privacy notices are a common basis for regulator inquiries and demand letters.",
+      "howToFix": "Use the Compliantfy policy generator, then have counsel review it.",
+      "standard": "CCPA/CPRA; state privacy laws",
+      "occurrences": 2,
+      "effort": "quick",
+      "where": [
+        "/privacy"
+      ]
+    },
+    {
+      "id": "iss-008",
+      "checkId": "a11y-contrast",
+      "category": "accessibility",
+      "region": "US",
+      "severity": "high",
+      "title": "Light gray text is too faint to read",
+      "plainEnglish": "Prices and sale tags fail contrast minimums for people with low vision.",
+      "whySued": "Low contrast is frequently listed alongside other barriers in accessibility complaints.",
+      "howToFix": "Raise text contrast to at least 4.5:1 (3:1 for large text).",
+      "standard": "WCAG 2.2 SC 1.4.3 Contrast (Minimum) (Level AA)",
+      "occurrences": 2,
+      "effort": "quick",
+      "where": [
+        ".price--compare",
+        ".badge--sale"
+      ]
+    },
+    {
+      "id": "iss-009",
+      "checkId": "legal-a11y-statement",
+      "category": "legal",
+      "region": "US",
+      "severity": "medium",
+      "title": "No accessibility statement or contact for access problems",
+      "plainEnglish": "Visitors who hit a barrier have no way to ask you for help.",
+      "whySued": "Without a contact route, a frustrated user's next step may be a lawyer instead of you.",
+      "howToFix": "Publish an accessibility statement with a phone number and email for help.",
+      "standard": "Best practice; EAA requires accessibility information in the EU",
+      "occurrences": 1,
+      "effort": "quick",
+      "where": [
+        "Site footer"
+      ]
+    },
+    {
+      "id": "iss-010",
+      "checkId": "sec-headers",
+      "category": "security",
+      "region": "US",
+      "severity": "low",
+      "title": "Content-Security-Policy header is missing",
+      "plainEnglish": "Your site is easier to tamper with through injected scripts.",
+      "whySued": "Not a common lawsuit trigger on its own, but it's part of a reasonable security posture.",
+      "howToFix": "Add a Content-Security-Policy header at your host or CDN.",
+      "standard": "OWASP secure headers",
+      "occurrences": 1,
+      "effort": "dev",
+      "where": [
+        "HTTP response headers"
+      ]
+    },
+    {
+      "id": "iss-eu-01",
+      "checkId": "eu-gdpr-consent",
+      "category": "eu",
+      "region": "EU",
+      "severity": "high",
+      "title": "Analytics cookies are set before consent for EU visitors",
+      "plainEnglish": "EU visitors get tracking cookies before they agree.",
+      "whySued": "EU regulators require prior consent for non-essential cookies.",
+      "howToFix": "Block non-essential cookies until opt-in for EU traffic, and add a Reject button with equal weight.",
+      "standard": "GDPR / ePrivacy",
+      "occurrences": 2,
+      "effort": "moderate",
+      "where": [
+        "All pages  _ga, _fbp"
+      ]
+    },
+    {
+      "id": "iss-eu-02",
+      "checkId": "eu-eaa",
+      "category": "eu",
+      "region": "EU",
+      "severity": "medium",
+      "title": "No accessibility information for EU customers",
+      "plainEnglish": "If you sell to EU consumers, the European Accessibility Act expects you to publish how your service meets accessibility requirements.",
+      "whySued": "EAA obligations apply from June 2025, and enforcement is by EU member-state authorities.",
+      "howToFix": "Publish an accessibility statement covering EU requirements, and fix WCAG issues.",
+      "standard": "European Accessibility Act (Directive (EU) 2019/882)",
+      "occurrences": 1,
+      "effort": "quick",
+      "where": [
+        "Site footer"
+      ]
+    }
+  ],
+  "gate": {
+    "freeIssueCount": 3,
+    "unlockWith": "email"
+  },
+  "recommendation": {
+    "path": "done-for-you",
+    "reason": "6 critical issues across checkout and tracking. Fixes touch theme code and the consent setup."
+  },
+  "euSummary": {
+    "enabled": true,
+    "totalIssues": 4,
+    "note": "EU module is scored separately and is not included in score or summary."
+  }
+}
