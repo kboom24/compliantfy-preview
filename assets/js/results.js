@@ -16,8 +16,18 @@
     (kids||[]).forEach(function(c){if(c==null)return;e.appendChild(typeof c==='string'?document.createTextNode(c):c);});return e;}
   CF.el=el;
   CF.exposureFor=function(v){for(var i=0;i<LEVELS.length;i++)if(v>=LEVELS[i][1]&&v<=LEVELS[i][2])return LEVELS[i][0];return 'critical';};
-  CF.load=function(){
+  /* Scanner API (see assets/js/config.js). ?api= overrides for testing (http/https only). */
+  CF.apiBase=function(){var q=qs('api');if(q&&/^https?:\/\/[^\s]+$/i.test(q))return q.replace(/\/+$/,'');var c=window.CF_CONFIG&&window.CF_CONFIG.apiBase;return c?String(c).replace(/\/+$/,''):'';};
+  CF.startScan=function(url,eu){return fetch(CF.apiBase()+'/api/scan',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:url,modules:eu?['us','eu']:['us']})}).then(function(r){return r.json().then(function(j){if(!r.ok&&!j.error)throw new Error('api');return j;});});};
+  CF.fetchScan=function(id){return fetch(CF.apiBase()+'/api/scan/'+encodeURIComponent(id),{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('api '+r.status);return r.json();});};
+  CF.load=function(o){
+    o=o||{};
     if(window.CF_RESULTS)return Promise.resolve(window.CF_RESULTS);
+    var sid=!o.sample&&qs('scan');
+    if(sid){var c=null;try{c=JSON.parse(sessionStorage.getItem('cf_scan_'+sid)||'null');}catch(x){}
+      if(c)return Promise.resolve(c);
+      if(CF.apiBase())return CF.fetchScan(sid);
+      return Promise.reject(new Error('Scan results expired'));}
     var src=qs('results')||'data/sample-results.json';
     return fetch(src,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json();})
       .catch(function(){if(window.CF_SAMPLE_RESULTS)return window.CF_SAMPLE_RESULTS;throw new Error('No results data');});
@@ -78,7 +88,8 @@
       el('div',null,[el('dt',{class:'r',text:'Why this gets you sued'}),el('dd',{text:x.whySued})]),
       el('div',null,[el('dt',{text:'How to fix it'}),el('dd',{text:x.howToFix})])]);
     return el('article',{class:'issue sv-'+x.severity,'aria-labelledby':'iss-'+x.id},[head,el('h3',{id:'iss-'+x.id,text:(idx+1)+'. '+x.title}),dl,
-      (x.where&&x.where.length)?el('p',{class:'meta',text:'Where: '+x.where.join('  ·  ')}):null]);
+      (x.where&&x.where.length)?el('p',{class:'meta',text:'Where: '+x.where.join('  ·  ')}):null,
+      x.fixPathLabel?el('p',{class:'meta',text:'Best way to fix: '+x.fixPathLabel}):null]);
   }
   CF.renderReport=function(r,o){
     o=o||{};var lvl=r.score.exposure||CF.exposureFor(r.score.value);
@@ -109,6 +120,7 @@
     document.getElementById('r-rec').textContent=r.recommendation?r.recommendation.reason:'';
     document.querySelectorAll('[data-rec]').forEach(function(c){c.hidden=!(r.recommendation&&c.getAttribute('data-rec')===r.recommendation.path);});
     document.getElementById('ex-bar').hidden=!r.example;
+    document.querySelectorAll('.ex-badge').forEach(function(b){b.hidden=!r.example;});
     document.getElementById('r-pages').textContent=String(r.scan.pagesScanned||'n/a');
   };
 })();

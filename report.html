@@ -85,7 +85,7 @@
 <p>© 2026 <span class="ph">[LEGAL ENTITY — placeholder]</span> · <span class="ph">[DOMAIN — placeholder]</span> · Draft build, not published.</p>
 </div></div></footer>
 <script src="assets/js/site.js" defer></script>
-<script src="data/sample-results.js"></script><script src="assets/js/results.js"></script>
+<script src="assets/js/config.js"></script><script src="data/sample-results.js"></script><script src="assets/js/results.js"></script>
 <script>
 CF.load().then(function(r){
   var st={eu:CF.euOn(),unlocked:new URLSearchParams(location.search).get('unlocked')==='1'};
@@ -97,6 +97,6 @@ CF.load().then(function(r){
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value.trim())){i.setAttribute('aria-invalid','true');er.hidden=false;er.textContent='Enter an email address like you@company.com';i.focus();return;}
     try{sessionStorage.setItem('cf_unlocked','1');}catch(x){}
     st.unlocked=true;CF.renderReport(r,st);var h=document.getElementById('iss-h');h.setAttribute('tabindex','-1');h.focus();});
-}).catch(function(){document.getElementById('r-open').textContent='Results could not be loaded.';});
+}).catch(function(){document.getElementById('r-open').textContent='These scan results have expired or could not be loaded. Run a new free scan from the homepage.';});
 </script>
 </body></html>
